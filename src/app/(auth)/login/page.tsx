@@ -57,7 +57,14 @@ export default function LoginPage() {
       setError('Could not load your profile.')
       return
     }
-    router.push(prof.role === 'admin' ? '/dashboard/admin' : '/dashboard/user')
+    if (prof.role === 'admin') {
+      router.push('/dashboard/admin')
+    } else if (prof.role === 'agency') {
+      router.push('/dashboard/agency')
+    } else {
+      router.push('/dashboard/user')
+    }
+    
   }
 
   return (
